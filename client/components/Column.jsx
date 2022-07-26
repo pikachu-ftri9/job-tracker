@@ -18,7 +18,9 @@ const Column = () => {
           Considering
           <JobCard />
         </div>
-        <div>Applied</div>
+        <div>Applied
+          <div>{applied}</div>
+        </div>
         <div>Phone Screen</div>
         <div>Have Interview</div>
         <div>Offers</div>

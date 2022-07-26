@@ -21,14 +21,16 @@ const UserContextProvider = ({ children }) => {
     const fetchApplied = () => {
         fetch('/api/Applied')
             .then((response) => response.json())
-            .then((data) => setApplied(data.rows))
+            .then((data) => {
+                console.log("data: ", data);
+                setApplied(data.rows)
+            })
             .catch((error) => console.log('An error in UserContext.jsx: Line 17', error));
     }
 
     useEffect(() => {
         fetchApplied();
     }, [])
-
 
     return (
         <UserContext.Provider value={applied}>
