@@ -27,6 +27,10 @@ router.post('/update',
     (req, res) => {
         res.status(200).json(res.locals.Listings)
 })
-
+router.delete('/delete', 
+    listingController.DeleteListings,
+    (req, res) => {
+        res.status(200).json(res.locals.Listings)
+})
 module.exports = router;
 
