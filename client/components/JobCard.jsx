@@ -6,7 +6,7 @@ const JobCard = () => {
 
   return (
     <div >
-      <Card shadow="sm" p="lg" radius="md" withBorder>
+      <Card shadow="sm" p="lg" radius="md" withBorder className="card">
       <Group position="center" mt="md" mb="xs">
         <Text weight={400}>Full Stack Engineer</Text >
         <Text weight={400}>Amazon</Text>

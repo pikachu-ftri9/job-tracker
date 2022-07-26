@@ -16,21 +16,21 @@ const Column = () => {
         }}
       >
         <div>
-          <h2>Considering</h2>
+          <h2 className="card">Considering</h2>
           <JobCard />
         </div>
         <div>
-          <h2>Applied</h2>
+          <h2 className="card">Applied</h2>
           <JobCard />
         </div>
         <div>
-          <h2>Phone Screens</h2>
+          <h2 className="card">Phone Screens</h2>
         </div>
         <div>
-          <h2>Interviews</h2>
+          <h2 className="card">Interviews</h2>
         </div>
         <div>
-          <h2>Offers</h2>
+          <h2 className="card">Offers</h2>
         </div>
       </div>
     </>

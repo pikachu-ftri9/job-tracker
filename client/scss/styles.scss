@@ -1,5 +1,6 @@
 body {
-  background-color: rgba(146, 203, 248, 0.577);
+  // background-color: #92cbf893;
+  background-color: azure;
   font-family: "Geneva";
   text-align: center;
 }
@@ -8,4 +9,9 @@ h2 {
   background-color: white;
   border: 1px solid rgba(128, 128, 128, 0.293);
   border-radius: 8px;
+}
+
+.card {
+  // box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
