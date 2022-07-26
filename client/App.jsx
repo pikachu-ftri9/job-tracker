@@ -1,4 +1,5 @@
 import React from 'react';
+import './scss/styles.scss'
 import MainContainer from './containers/MainContainer.jsx';
 
 const App = () => (

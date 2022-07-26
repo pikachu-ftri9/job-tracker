@@ -6,20 +6,32 @@ const Column = () => {
     <>
       <div
         style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-around",
-          textAlign: "center"
+          display: "grid",
+          // flexDirection: "row",
+          // justifyContent: "space-around",
+          textAlign: "center",
+          gridTemplateColumns: "repeat(5, 1fr)",
+          gridColumnGap: "15px"
+
         }}
       >
         <div>
-          Considering
+          <h2 className="card">Considering</h2>
           <JobCard />
         </div>
-        <div>Applied</div>
-        <div>Phone Screen</div>
-        <div>Have Interview</div>
-        <div>Offers</div>
+        <div>
+          <h2 className="card">Applied</h2>
+          <JobCard />
+        </div>
+        <div>
+          <h2 className="card">Phone Screens</h2>
+        </div>
+        <div>
+          <h2 className="card">Interviews</h2>
+        </div>
+        <div>
+          <h2 className="card">Offers</h2>
+        </div>
       </div>
     </>
   );
