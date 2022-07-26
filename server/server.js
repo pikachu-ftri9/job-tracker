@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const PORT = 3000;
+
 app.use(express.json());
 app.use(express.urlencoded({extended : true}));
 
@@ -14,6 +15,7 @@ app.all('*', (req, res) => {
   console.log('Page not found');
   return res.status(404).send('Page not found. Click <a href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ">here</a> for more information.')
 });
+
 app.use(defaultErrorHandler);
 function defaultErrorHandler(err, req, res, next){
   const defaultErr = 
