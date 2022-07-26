@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import JobCard from './JobCard.jsx';
+import { UserContext, UserContextProvider } from '../UserContext.jsx';
 
 const Column = () => {
+  const applied = useContext(UserContext);
   return (
     <>
       <div

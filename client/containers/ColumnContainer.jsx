@@ -1,10 +1,12 @@
 import React from 'react'
 import Column from '../components/Column.jsx'
-
+import { UserContext, UserContextProvider } from '../UserContext.jsx';
 const ColumnContainer = () => {
   return (
     <div style={{width: '80%', margin: '0 auto'}}>
-      <Column />
+      <UserContextProvider>
+        <Column />
+      </UserContextProvider>
     </div>
   );
 }
