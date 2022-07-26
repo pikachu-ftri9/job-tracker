@@ -1,3 +1,4 @@
+const { Pool } = require('pg');
 const db = require('../models/model.js');
 
 const listingController = {};
@@ -9,28 +10,43 @@ listingController.getListings = (req, res, next) => {
 
     db.query(qry, (err, result) => {
         if (err) {
-            next(err.stack);
+            return next(err.stack);
         } else {
             //this will need to be adjusted based on datastructure
-            res.locals.Listings = result.rows
-            next();
+            res.locals.listings = result.rows
+            return next();
         }
      })
 }
-listingController.getAppliedListings = (req, res, next) => {
-    //need to define query based on database structure
-    const qry = 
-    `SELECT * FROM job_tracker.listings WHERE status='Applied'`
 
-    db.query(qry, (err, result) => {
-        if (err) {
-            next(err.stack);
-        } else {
-            //this will need to be adjusted based on datastructure
-            res.locals.Listings = result.rows
-            next();
-        }
-     })
+listingController.getAppliedListings = async (req, res, next) => {
+    try {
+        const appListings = await db.query(`SELECT * FROM job_tracker.listings WHERE status='Applied'`);
+        res.locals.listings = appListings.rows;
+        console.log('getAppliedListings', appListings.rows);
+        return next();
+    } catch (error) {
+        return next({
+            log: 'Error in listingController.getAppliedListings',
+            status: 400,
+            message: {
+              error: `Error in listingController.getAppliedListings ${error}`,
+            },
+        });
+    }
+    // //need to define query based on database structure
+    // const qry = 
+    // `SELECT * FROM job_tracker.listings WHERE status='Applied'`
+
+    // db.query(qry, (err, result) => {
+    //     if (err) {
+    //         return next(err.stack);
+    //     } else {
+    //         //this will need to be adjusted based on datastructure
+    //         res.locals.listings = result.rows
+    //         return next();
+    //     }
+    //  })
 }
 listingController.getCallbackListings = (req, res, next) => {
     //need to define query based on database structure
@@ -42,12 +58,12 @@ listingController.getCallbackListings = (req, res, next) => {
             next(err.stack);
         } else {
             //this will need to be adjusted based on datastructure
-            res.locals.Listings = result.rows
+            res.locals.listings = result.rows
             next();
         }
      })
 }
-listingController.UpdateListings = (req, res, next) => {
+listingController.updateListings = (req, res, next) => {
     //need to define query based on database structure
     const qry = 
     `UPDATE job_tracker.listings 
@@ -59,14 +75,15 @@ listingController.UpdateListings = (req, res, next) => {
         if (err) {
             next(err.stack);
 
-            return next()        } else {
+            return next()        
+        } else {
             //this will need to be adjusted based on datastructure
-            res.locals.Listings = result.rows
+            res.locals.listings = result.rows
             next();
         }
      })
 }
-listingController.DeleteListings = (req, res, next) => {
+listingController.deleteListings = (req, res, next) => {
     //need to define query based on database structure
     const qry = 
     `Delete from job_tracker.listings where _id=1`
@@ -76,7 +93,7 @@ listingController.DeleteListings = (req, res, next) => {
             next(err.stack);
         } else {
             //this will need to be adjusted based on datastructure
-            res.locals.Listings = result.rows
+            res.locals.listings = result.rows
             next();
         }
      })

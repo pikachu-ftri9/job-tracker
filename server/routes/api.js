@@ -10,27 +10,27 @@ router.get('/',
         res.status(200).json(res.locals.Listings)
     })
 
-router.get('/Applied', 
+router.get('/applied', 
     listingController.getAppliedListings,
     (req, res) => {
-        res.status(200).json(res.locals.Listings)
+        res.status(200).json(res.locals.listings)
 })
 
 router.get('/callback', 
     listingController.getCallbackListings,
     (req, res) => {
-        res.status(200).json(res.locals.Listings)
+        res.status(200).json(res.locals.listings)
 })
 //
 router.post('/update', 
-    listingController.UpdateListings,
+    listingController.updateListings,
     (req, res) => {
-        res.status(200).json(res.locals.Listings)
+        res.status(200).json(res.locals.listings)
 })
 router.delete('/delete', 
-    listingController.DeleteListings,
+    listingController.deleteListings,
     (req, res) => {
-        res.status(200).json(res.locals.Listings)
+        res.status(200).json(res.locals.listings)
 })
 module.exports = router;
 
