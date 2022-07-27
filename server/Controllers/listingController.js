@@ -222,19 +222,35 @@ listingController.updateListings = async (req, res, next) => {
 //     }
 //   });
 };
-listingController.deleteListings = (req, res, next) => {
+listingController.deleteListings = async (req, res, next) => {
   //need to define query based on database structure
-  const qry = `Delete from job_tracker.listings where _id=1`;
-
-  db.query(qry, (err, result) => {
-    if (err) {
-      next(err.stack);
-    } else {
-      //this will need to be adjusted based on datastructure
-      res.locals.listings = result.rows;
-      next();
-    }
-  });
+  const {_id } = req.body;
+  VALUES = [_id]
+  const qry = `DELETE FROM job_tracker.listings where _id=$1`;
+  
+  try {
+    const updatedListing = await db.query(qry, VALUES);
+    res.locals.updatedListing = updatedListing.rows;
+    return next();
+  } catch (error) {
+        return next({
+            log: 'Error in deleteListing',
+            status: 400,
+            message: {
+                error: 'Error in deleteListing ${error}',
+            }
+        })
+  
+  }
+//   db.query(qry, (err, result) => {
+//     if (err) {
+//       next(err.stack);
+//     } else {
+//       //this will need to be adjusted based on datastructure
+//       res.locals.listings = result.rows;
+//       next();
+//     }
+//   });
 };
 
 module.exports = listingController;
