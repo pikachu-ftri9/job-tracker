@@ -1,30 +1,42 @@
 import React from 'react'
 import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
 // import { useNavigate } from "react-router-dom";
+// {title = 'Full Stack Engineer', company = 'Codesmith', url = 'www.google.com'}
+const JobCard = ({title, company, url}) => {
 
-/** when app loads a request will be made for all the user's jobs
- *  each card will render with the job title, company name, and job listing url
- */
-
-
-
-const JobCard = () => {
+  function visitListing(url) {
+    window.location.href = url;
+    // return null;
+  }
 
   return (
-    <div >
-      <Card shadow="sm" p="lg" radius="md" withBorder className="card">
-      <Group position="center" mt="md" mb="xs">
-        <Text weight={400}>Full Stack Engineer</Text >
-        <Text weight={400}>Amazon</Text>
-      </Group>
+    <div>
+      {/* <Badge color="pink" variant="light">
+        <h4>{company}</h4>
+      </Badge> */}
+      <Card className="card" shadow="sm" p="lg" radius="md" >
+      {/* withBorder */}
+      <h2>{title}</h2>
+      <h3>{company}</h3>
+      
+      {/* 
+      <Group position="apart" mt="md" mb="xs">
+        <Text weight={500}></Text>
+      </Group> */}
 
-      <Button variant="light" color="blue" fullWidth mt="md" radius="md">
-        See Listing
+      {/* <Text size="sm" color="dimmed">
+        Listing URL: {url}
+      </Text> */}
+
+      <Button size="lg" color="blue" variant="outline" fullWidth mt="md" radius="md">
+        
+      <a style={{textDecoration: "none", color:"inherit"}} href={url} target="_blank" rel="noreferrer">See Listing</a>
+        
       </Button>
+      
     </Card>
-
     </div>
   );
 }
 
-export default JobCard
+export default JobCard;
