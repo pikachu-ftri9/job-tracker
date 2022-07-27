@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
+// import { useNavigate } from "react-router-dom";
 
 const JobCard = ({title = 'Full Stack Engineer', company = 'Codesmith', url = 'none'}) => {
 

@@ -6,7 +6,7 @@ import axios from 'axios';
 const Column = () => {
   // const app = useContext(UserContext);
   const [app, setApp] = useState([])
-  
+
   // const fetchApplied = () => {
   //   console.log('fetchApplied ')
   //   fetch('api/applied')
@@ -37,14 +37,17 @@ const Column = () => {
     <>
       <div
         style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-around",
-          textAlign: "center"
+          display: "grid",
+          // flexDirection: "row",
+          // justifyContent: "space-around",
+          textAlign: "center",
+          gridTemplateColumns: "repeat(5, 1fr)",
+          gridColumnGap: "15px"
+
         }}
       >
         <div>
-          Considering
+          <h2 className="card">Considering</h2>
           <JobCard />
         </div>
         <div>Applied
