@@ -13,7 +13,7 @@ const Column = () => {
           display: "grid",
           textAlign: "center",
           gridTemplateColumns: "repeat(5, 1fr)",
-          backgroundColor: "lightblue",
+          backgroundColor: "lightgray",
           borderRadius: "10px"
 
         }}

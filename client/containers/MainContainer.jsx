@@ -5,15 +5,11 @@ import DeleteCard from '../components/DeleteCard.jsx'
 
 const MainContainer = () => {
   return (
-    // marginRight: "124px"
     <>
-    
       <h1>Job Tracker</h1>
       <div style={{margin: "0 auto", width: "300px"}}>
         <AddCard />
       </div>  
-      {/* <DeleteCard/> */}
-    
     <ColumnContainer />
     </>
   );

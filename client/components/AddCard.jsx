@@ -58,7 +58,7 @@ export default function AddCard() {
             setCompany('');
             setURL('');
             setOpened(false);
-            // fetchConsidering();
+            location.reload();
           }}
           >
             Submit

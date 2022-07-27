@@ -13,7 +13,7 @@ const UserContextProvider = ({ children }) => {
     const [offers, setOffers] = useState([]);
     // const providerObj = {con: considering, app: applications, cb: callbacks, iv: interviews, of: offers, setCon: setConsidering, setA: setApp, setCall: setCallbacks, setInt: setInterviews, setOf: setOffers };
 
-    const providerObj = {con: considering, app: applications, cb: callbacks, iv: interviews, of: offers,  };
+    const providerObj = {con: considering, app: applications, cb: callbacks, iv: interviews, of: offers};
 
     const fetchConsidering = async () => {
         await fetch('api/considering')

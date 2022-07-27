@@ -16,12 +16,9 @@ export default function DropDown({id}) {
           console.log({_id: id, status: e});
 
           axios.patch('/api/update', {_id: id, status: e}).catch(error => console.log(error))
+          location.reload();
         }}
-        // onDropdownClose={()=> {
-        //   axios.patch('api/update', {_id: id, status: value}).catch(error => console.log(error))
-        // }}
-        label="Job Status"
-        placeholder="Pick one"
+        placeholder="Job Status"
         data={[
           { value: 'Applied', label: 'Applied' },
           { value: 'Callback', label: 'Callbacks' },

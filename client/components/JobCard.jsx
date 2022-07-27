@@ -37,7 +37,7 @@ const JobCard = ({id, title, company, url}) => {
       <a style={{textDecoration: "none", color:"inherit"}} href={url} target="_blank" rel="noreferrer">See Listing</a>
         
       </Button>
-      <div style={{display: "flex", alignItems: "flex-end"}}>
+      <div style={{display: "flex", justifyContent: "space-evenly", alignItems: "flex-end"}}>
         <DropDown id={id}/>
         <DeleteCard id={id}/>
       </div>

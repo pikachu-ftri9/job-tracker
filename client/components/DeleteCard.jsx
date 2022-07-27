@@ -9,6 +9,7 @@ export default function DeleteCard({id}) {
     // alert(id);
     axios.delete('/api/delete', {data: {_id: id}})
       .catch(error => console.log('Error caught in DeleteCard.jsx', error))
+    location.reload();
   }
 
   return (
