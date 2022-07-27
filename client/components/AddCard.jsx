@@ -22,29 +22,33 @@ export default function AddCard() {
         title="Job Information"
       >
         {/* Modal content */}
+        
         <TextInput
+          data-autofocus
           value={title} onChange={(event) => setTitle(event.currentTarget.value)}
-          size="lg" fullWidth mt="md" radius="md"
+          size="xl" fullWidth mt="md" radius="md"
           align="center"
           required
+          
           label="Job Title"
 
         />
         <TextInput
           value={company} onChange={(event) => setCompany(event.currentTarget.value)}
-          size="lg" fullWidth mt="md" radius="md"
+          size="xl" fullWidth mt="md" radius="md"
           required
           label="Company Name"
         />
         <TextInput
           value={url} onChange={(event) => setURL(event.currentTarget.value)}
-          size="lg" fullWidth mt="md" radius="md"
+          size="xl" fullWidth mt="md" radius="md"
           required
           label="Listing URL"
         />
+        
         <Group>
           <Button
-          size="lg" color="blue" fullWidth mt="md" radius="md"
+          size="xl" color="blue" fullWidth mt="md" radius="md"
           onClick={() => {
             const newJob = {title, company, url}
             console.log(newJob)
@@ -70,23 +74,5 @@ export default function AddCard() {
         </Button>
       </Group>
     </div>
-    /*<div>
-      <Group position="left">
-        <Button
-          styles={() => ({
-            root: {
-              margin: "0, 20"
-          }})}
-          size="lg"
-          id="addJobButton"
-          variant="light"
-          onClick={() => {
-            alert("Adding a new card")
-          }}
-        >
-          Add Job
-        </Button>
-      </Group> 
-      </div> */
   )
 }
