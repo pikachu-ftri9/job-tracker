@@ -1,29 +1,39 @@
 import React from 'react'
 import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
 // import { useNavigate } from "react-router-dom";
+// {title = 'Full Stack Engineer', company = 'Codesmith', url = 'www.google.com'}
+const JobCard = ({title, company, url}) => {
 
-const JobCard = ({title = 'Full Stack Engineer', company = 'Codesmith', url = 'none'}) => {
+  function visitListing(url) {
+    window.location.href = url;
+    // return null;
+  }
 
   return (
-    <div style={{ textAlign: "center", border: "1px solid black" }}>
-      <h3>{title}</h3>
-      <Badge color="pink" variant="light">
+    <div>
+      {/* <Badge color="pink" variant="light">
         <h4>{company}</h4>
-      </Badge>
-      <Card className = "card" shadow="sm" p="lg" radius="md" >
+      </Badge> */}
+      <Card className="card" shadow="sm" p="lg" radius="md" >
       {/* withBorder */}
-
+      <h2>{title}</h2>
+      <h3>{company}</h3>
+      
+      {/* 
       <Group position="apart" mt="md" mb="xs">
         <Text weight={500}></Text>
-      </Group>
+      </Group> */}
 
-      <Text size="sm" color="dimmed">
+      {/* <Text size="sm" color="dimmed">
         Listing URL: {url}
-      </Text>
+      </Text> */}
 
-      <Button variant="light" color="blue" fullWidth mt="md" radius="md">
-        Button
+      <Button size="lg" color="blue" variant="outline" fullWidth mt="md" radius="md">
+        
+      <a style={{textDecoration: "none", color:"inherit"}} href={url} target="_blank" rel="noreferrer">See Listing</a>
+        
       </Button>
+      
     </Card>
     </div>
   );
