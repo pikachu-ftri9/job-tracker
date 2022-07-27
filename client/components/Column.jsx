@@ -11,19 +11,18 @@ const Column = () => {
       <div
         style={{
           display: "grid",
-          // flexDirection: "row",
-          // justifyContent: "space-around",
           textAlign: "center",
           gridTemplateColumns: "repeat(5, 1fr)",
-          gridColumnGap: "15px"
+          backgroundColor: "lightblue",
+          borderRadius: "10px"
 
         }}
       >
         <div>
           <h2 className="card">Considering</h2>
-          <JobCard />
         </div>
-        <div>Applied
+        <div>
+          <h2 className="card">Applied</h2>
           <div>{providerObj.app.map(el => {
             return (
               <div>
@@ -32,7 +31,8 @@ const Column = () => {
             )
           })}</div>
         </div>
-        <div>Phone Screen
+        <div>
+          <h2 className="card">Callbacks</h2>
           <div>{providerObj.cb.map((el, ind) => {
             return (
               <div>
@@ -41,8 +41,12 @@ const Column = () => {
             )
           })}</div>
         </div>
-        <div>Have Interview</div>
-        <div>Offers</div>
+        <div>
+          <h2 className="card">Interviews</h2>
+        </div>
+        <div>
+          <h2 className="card">Offers</h2>
+        </div>
       </div>
     </>
   );
