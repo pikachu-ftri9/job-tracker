@@ -33,35 +33,47 @@ const Column = () => {
           console.log(error)
         })
   }, [])
+
+    const listings = app.map((el, i) => {
+      return (
+        <div>
+          <JobCard key={i} title={el.title} company={el.company} url={el.url}/>
+        </div>
+      )
+    })
+
   return (
+    
     <>
       <div
         style={{
           display: "grid",
-          // flexDirection: "row",
-          // justifyContent: "space-around",
           textAlign: "center",
           gridTemplateColumns: "repeat(5, 1fr)",
-          gridColumnGap: "15px"
+          backgroundColor: "lightblue",
+          borderRadius: "10px"
 
         }}
       >
         <div>
           <h2 className="card">Considering</h2>
-          <JobCard />
+          {listings}
         </div>
-        <div>Applied
-          <div>{app.map(el => {
-            return (
-              <div>
-                <JobCard title={el.title} company={el.company} url={el.url}/>
-              </div>
-            )
-          })}</div>
+        <div>
+          <h2 className="card">Applied</h2>
+          <div>
+            {listings}
+          </div>
         </div>
-        <div>Phone Screen</div>
-        <div>Have Interview</div>
-        <div>Offers</div>
+        <div>
+          <h2 className="card">Callbacks</h2>
+          </div>
+        <div>
+          <h2 className="card">Interviews</h2>
+          </div>
+        <div>
+          <h2 className="card">Offers</h2>
+          </div>
       </div>
     </>
   );
