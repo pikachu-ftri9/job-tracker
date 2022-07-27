@@ -1,49 +1,69 @@
-// import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
-// import { Children } from 'react';
-// const UserContext = createContext();
-// // const UserContextUpdater = createContext();
+import React, { createContext, useContext, useState, useEffect, useMemo, useId } from 'react';
+import { Children } from 'react';
+import axios from 'axios';
 
-// // const useUserContextState = () => {
-// //     const context = useContext(UserContextState);
+const UserContext = createContext();
 
-// //     // if context is undefined, throw an error
-// //     if (context === 'undefined') throw new Error('useUserContextState was used outside of its provider');
+const UserContextProvider = ({ children }) => {
+    // states
+    const [applications, setApp] = useState([])
+    const [callbacks, setCallback] = useState([]);
+    const providerObj = {app: applications, cb: callbacks};
 
-// //     return context;
-// // }
+    const fetchApplied = async () => {
+        await fetch('api/applied')
+        .then((response) => {
+            if (response.ok) return response.json();
+            throw response;
+        })
+        .then((data) => {
+            setApp(data);
+        })
+        .catch((error) => console.log('An error in UserContext.jsx: Line 17', error))
 
-// const UserContextProvider = ({ children }) => {
-//     // states
-//     const [applied, setApplied] = useState([]);
-//     const [callback, setCallback] = useState([]);
+    }
+
+    const fetchCallbacks = async () => {
+        axios.get('api/callback')
+            .then(function (response) {
+                console.log('response', response.data)
+                setCallback(response.data)
+            })
+            .catch(function (error){
+                console.log(error)
+            })
+    }
+
+    useEffect(() => {
+        // Listings
+        fetchCallbacks();
+
+        // Applied
+        fetchApplied();
+
+    }, [])
+
+    
+    return (
+        <UserContext.Provider value={providerObj}>
+            {children}
+        </UserContext.Provider>
+    )
+}
+
+export { UserContextProvider, UserContext };
 
 
-//     // fetching data for Applied column from backend
-//     const fetchApplied = () => {
-//         console.log('fetchApplied ')
-//         fetch('/api/applied')
-//             .then((response) => {
-//                 console.log("response", response);
-//                 response.json()
-//             })
-//             .then((data) => {
-//                 console.dir(data)
-//                 console.log("hi data: ", data.rows[0]);
-//                 setApplied(data);
-//             })
-//             .catch((error) => console.log('An error in UserContext.jsx: Line 17', error));
-//     }
 
-//     useEffect(() => {
-//         console.log('useEffect', applied)
-//         fetchApplied();
-//     }, [])
+// // fetching data for Applied column from backend
 
-//     return (
-//         <UserContext.Provider value={applied}>
-//             {children}
-//         </UserContext.Provider>
-//     )
-// }
 
-// export { UserContextProvider, UserContext };
+// Axios Get Request
+// axios.get('/api/applied')
+//   .then(function (response) {
+//     console.log('response', response.data)
+//     setApp(response.data)
+//   })
+//   .catch(function (error){
+//     console.log(error)
+//   })

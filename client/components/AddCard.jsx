@@ -51,7 +51,7 @@ export default function AddCard() {
           onClick={() => {
             const newJob = {title, company, url}
             console.log(newJob)
-            // axios.post('/api/addNewJob', newJob)
+            // axios.post('/api/addNewJob', newJob).catch(error => console.log('Error in AddCard.jsx: ', error))
             setTitle('');
             setCompany('');
             setURL('');

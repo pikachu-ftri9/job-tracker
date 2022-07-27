@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/', 
     listingController.getListings,
     (req, res) => {
-        res.status(200).json(res.locals.Listings)
+        res.status(200).json(res.locals.getLists)
     })
 
 router.get('/applied', 
@@ -18,6 +18,7 @@ router.get('/applied',
 
 router.get('/callback', 
     listingController.getCallbackListings,
+    // listingController.getCallbackListings,
     (req, res) => {
         res.status(200).json(res.locals.listings)
 })
