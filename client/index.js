@@ -6,8 +6,8 @@ import App from './App.jsx';
 import styles from './scss/styles.scss';
 
 render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  // <Provider store={store}>
+  <App />,
+  // </Provider>
   document.getElementById('root')
 );
