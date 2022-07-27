@@ -11,7 +11,7 @@ listingController.getListings = async (req, res, next) => {
       return next(err.stack);
     } else {
       //this will need to be adjusted based on datastructure
-      console.log('getListings', result.rows);
+      // console.log('getListings', result.rows);
       res.locals.listings = result.rows;
       return next();
     }
@@ -24,7 +24,7 @@ listingController.getAppliedListings = async (req, res, next) => {
       `SELECT * FROM job_tracker.listings WHERE status='Applied'`
     );
     res.locals.listings = appListings.rows;
-    console.log('getAppliedListings', appListings.rows);
+    // console.log('getAppliedListings', appListings.rows);
     return next();
   } catch (error) {
     return next({
@@ -58,7 +58,7 @@ listingController.getCallbackListings = async (req, res, next) => {
       `SELECT  *  FROM job_tracker.listings WHERE status='Callback'`
     );
     res.locals.listings = appListings.rows;
-    console.log('listingController.getListings', appListings.rows);
+    // console.log('listingController.getListings', appListings.rows);
     return next();
   } catch (error) {
     return next({
@@ -79,7 +79,7 @@ listingController.getInterviewListings = async (req, res, next) => {
       `SELECT  *  FROM job_tracker.listings WHERE status='Interview'`
     );
     res.locals.listings = appListings.rows;
-    console.log('listingController.getListings', appListings.rows);
+    // console.log('listingController.getListings', appListings.rows);
     return next();
   } catch (error) {
     return next({
@@ -100,7 +100,7 @@ listingController.getConsideringListings = async (req, res, next) => {
       `SELECT  *  FROM job_tracker.listings WHERE status='Considering'`
     );
     res.locals.listings = appListings.rows;
-    console.log('listingController.getListings', appListings.rows);
+    // console.log('listingController.getListings', appListings.rows);
     return next();
   } catch (error) {
     return next({
@@ -121,7 +121,7 @@ listingController.getOfferListings = async (req, res, next) => {
       `SELECT  *  FROM job_tracker.listings WHERE status='Offer'`
     );
     res.locals.listings = appListings.rows;
-    console.log('listingController.getListings', appListings.rows);
+    // console.log('listingController.getListings', appListings.rows);
     return next();
   } catch (error) {
     return next({
@@ -136,7 +136,7 @@ listingController.getOfferListings = async (req, res, next) => {
 listingController.addNewJob = async (req, res, next) => {
   //need to define query based on database structure
   const { title, url, company } = req.body;
-  console.log('here is request info', title, url, company);
+  // console.log('here is request info', title, url, company);
   const VALUES = [title, url, company, 'Considering'];
   const qry = `INSERT INTO job_tracker.listings (title, url, company, status)
      VALUES ($1, $2, $3, $4) RETURNING *`;
@@ -148,7 +148,7 @@ listingController.addNewJob = async (req, res, next) => {
   try {
     const appListings = await db.query(qry, VALUES);
     res.locals.listings = appListings.rows;
-    console.log('listingController.addNewJob', appListings.rows);
+    // console.log('listingController.addNewJob', appListings.rows);
     return next();
   } catch (error) {
     return next({
@@ -164,7 +164,7 @@ listingController.addNewJob = async (req, res, next) => {
 listingController.updateListings = async (req, res, next) => {
   //need to define query based on database structure
   const { _id, status } = req.body;
-  console.log('This is req body', req.body);
+  // console.log('This is req body', req.body);
   const obj = {
     Applied: 1,
     Callback: 1,

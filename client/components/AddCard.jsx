@@ -21,7 +21,7 @@ export default function AddCard() {
         }
         title="Job Information"
       >
-        {/* Modal content */}
+        
         
         <TextInput
           data-autofocus
@@ -52,7 +52,7 @@ export default function AddCard() {
           onClick={() => {
             const newJob = {title, company, url}
             console.log(newJob)
-            axios.post('/api/addNewJob', newJob)
+            axios.post('/api/addJob', newJob)
               .catch(error => console.log('Error in AddCard.jsx: ', error))
             setTitle('');
             setCompany('');

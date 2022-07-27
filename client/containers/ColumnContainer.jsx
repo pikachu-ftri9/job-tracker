@@ -14,4 +14,4 @@ const ColumnContainer = () => {
   );
 }
 
-export default ColumnContainer
+export default ColumnContainer;
