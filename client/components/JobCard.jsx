@@ -2,6 +2,12 @@ import React from 'react'
 import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
 // import { useNavigate } from "react-router-dom";
 
+/** when app loads a request will be made for all the user's jobs
+ *  each card will render with the job title, company name, and job listing url
+ */
+
+
+
 const JobCard = () => {
 
   return (
