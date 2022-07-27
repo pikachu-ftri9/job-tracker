@@ -10,7 +10,7 @@ const JobCard = ({title = 'Full Stack Engineer', company = 'Codesmith', url = 'n
       <Badge color="pink" variant="light">
         <h4>{company}</h4>
       </Badge>
-      <Card shadow="sm" p="lg" radius="md" >
+      <Card className = "card" shadow="sm" p="lg" radius="md" >
       {/* withBorder */}
 
       <Group position="apart" mt="md" mb="xs">

@@ -5,9 +5,4 @@ import App from './App.jsx';
 // import store from './store.js';
 import styles from './scss/styles.scss';
 
-render(
-  // <Provider store={store}>
-  <App />,
-  // </Provider>
-  document.getElementById('root')
-);
+render(<App />, document.getElementById('root'));
