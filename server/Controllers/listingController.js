@@ -4,34 +4,18 @@ const db = require('../models/model.js');
 const listingController = {};
 
 listingController.getListings = async (req, res, next) => {
-    //need to define query based on database structure
-    // const qry = 'SELECT  *  FROM job_tracker.listings';
-    try {
-        const appListings = await db.query(`SELECT  *  FROM job_tracker.listings WHERE status='Callback'`);
-        res.locals.listings = appListings.rows;
-        console.log('listingController.getListings', appListings.rows);
-        return next();
-    } catch (error) {
-        return next({
-            log: 'Error in listingController.getListings',
-            status: 400,
-            message: {
-              error: `Error in listingController.getListings ${error}`,
-            },
-        });
-    }
-
-
-    // db.query(qry, (err, result) => {
-    //     if (err) {
-    //         return next(err.stack);
-    //     } else {
-    //         //this will need to be adjusted based on datastructure
-    //         console.log('getListings', result.rows);
-    //         res.locals.listings = result.rows
-    //         return next();
-    //     }
-    //  })
+    // need to define query based on database structure
+    const qry = 'SELECT  *  FROM job_tracker.listings';
+    db.query(qry, (err, result) => {
+        if (err) {
+            return next(err.stack);
+        } else {
+            //this will need to be adjusted based on datastructure
+            console.log('getListings', result.rows);
+            res.locals.listings = result.rows
+            return next();
+        }
+     })
 }
 
 listingController.getAppliedListings = async (req, res, next) => {
@@ -63,21 +47,27 @@ listingController.getAppliedListings = async (req, res, next) => {
     //     }
     //  })
 }
-listingController.getCallbackListings = (req, res, next) => {
+listingController.getCallbackListings = async (req, res, next) => {
     //need to define query based on database structure
     const qry = 
     `SELECT * FROM job_tracker.listings WHERE status='Callback'`
 
-    db.query(qry, (err, result) => {
-        if (err) {
-            next(err.stack);
-        } else {
-            //this will need to be adjusted based on datastructure
-            res.locals.listings = result.rows
-            next();
-        }
-     })
+    try {
+        const appListings = await db.query(`SELECT  *  FROM job_tracker.listings WHERE status='Callback'`);
+        res.locals.listings = appListings.rows;
+        console.log('listingController.getListings', appListings.rows);
+        return next();
+    } catch (error) {
+        return next({
+            log: 'Error in listingController.getListings',
+            status: 400,
+            message: {
+              error: `Error in listingController.getListings ${error}`,
+            },
+        });
+    }
 }
+
 listingController.updateListings = (req, res, next) => {
     //need to define query based on database structure
     const qry = 

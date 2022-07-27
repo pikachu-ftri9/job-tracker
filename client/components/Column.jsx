@@ -4,7 +4,7 @@ import { UserContext, UserContextProvider } from '../UserContext.jsx';
 
 const Column = () => {
   const providerObj = useContext(UserContext);
-  console.log("app", providerObj)
+  console.log("app", providerObj);
 
   return (
     <>
@@ -33,7 +33,7 @@ const Column = () => {
           })}</div>
         </div>
         <div>Phone Screen
-          <div>{providerObj.listings.map((el, ind) => {
+          <div>{providerObj.cb.map((el, ind) => {
             return (
               <div>
                 <JobCard title={el.title} company={el.company} url={el.url} key={ind + 2}/>

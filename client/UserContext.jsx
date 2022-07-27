@@ -7,8 +7,8 @@ const UserContext = createContext();
 const UserContextProvider = ({ children }) => {
     // states
     const [applications, setApp] = useState([])
-    const [lists, setListings] = useState([]);
-    const providerObj = {app: applications, listings: lists};
+    const [callbacks, setCallback] = useState([]);
+    const providerObj = {app: applications, cb: callbacks};
 
     const fetchApplied = async () => {
         await fetch('api/applied')
@@ -23,30 +23,20 @@ const UserContextProvider = ({ children }) => {
 
     }
 
-    const fetchListings = async () => {
+    const fetchCallbacks = async () => {
         axios.get('api/callback')
             .then(function (response) {
                 console.log('response', response.data)
-                setListings(response.data)
+                setCallback(response.data)
             })
             .catch(function (error){
                 console.log(error)
             })
-        // await fetch('/api/listings')
-        // .then((response) => {
-        //     if (response.ok) return response.json();
-        //     throw response;
-        // })
-        // .then((data) => {
-        //     setListings(data);
-        // })
-        // .catch((error) => console.log('An error in UserContext.jsx: ', error))
-
     }
 
     useEffect(() => {
         // Listings
-        fetchListings();
+        fetchCallbacks();
 
         // Applied
         fetchApplied();

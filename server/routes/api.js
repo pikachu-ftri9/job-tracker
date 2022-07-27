@@ -17,7 +17,7 @@ router.get('/applied',
 })
 
 router.get('/callback', 
-    listingController.getListings,
+    listingController.getCallbackListings,
     // listingController.getCallbackListings,
     (req, res) => {
         res.status(200).json(res.locals.listings)
