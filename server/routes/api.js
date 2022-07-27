@@ -15,6 +15,21 @@ router.get('/applied',
     (req, res) => {
         res.status(200).json(res.locals.listings)
 })
+router.get('/interviews', 
+    listingController.getInterviewListings,
+    (req, res) => {
+        res.status(200).json(res.locals.listings)
+})
+router.get('/considering', 
+    listingController.getConsideringListings,
+    (req, res) => {
+        res.status(200).json(res.locals.listings)
+})
+router.get('/offers', 
+    listingController.getOfferListings,
+    (req, res) => {
+        res.status(200).json(res.locals.listings)
+})
 
 router.get('/callback', 
     listingController.getCallbackListings,
@@ -23,8 +38,14 @@ router.get('/callback',
         res.status(200).json(res.locals.listings)
 })
 //
-router.post('/update', 
+router.patch('/update', 
     listingController.updateListings,
+    (req, res) => {
+        console.log('result', res.locals.updatedListing)
+        res.status(200).json(res.locals.updatedListing)
+})
+router.post('/addNewJob', 
+    listingController.addNewJob,
     (req, res) => {
         res.status(200).json(res.locals.listings)
 })
