@@ -53,7 +53,10 @@ export default function AddCard() {
             const newJob = {title, company, url}
             console.log(newJob)
             // axios.post('/api/addNewJob', newJob)
-            setOpened(false)
+            setTitle('');
+            setCompany('');
+            setURL('');
+            setOpened(false);
           }}
           >
             Submit
