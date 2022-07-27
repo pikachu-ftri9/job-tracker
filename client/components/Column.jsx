@@ -24,7 +24,7 @@ const Column = () => {
           <div>{providerObj.con.map((el, ind) => {
             return (
               <div>
-                <JobCard title={el.title} company={el.company} url={el.url} key={ind + 0.33}/>
+                <JobCard id={el._id} title={el.title} company={el.company} url={el.url} key={ind}/>
               </div>
             )})}
           </div>
@@ -32,9 +32,10 @@ const Column = () => {
         <div>
           <h2 className="card">Applied</h2>
           <div>{providerObj.app.map((el, ind) => {
+            // console.log(app, el);
             return (
               <div>
-                <JobCard title={el.title} company={el.company} url={el.url} key={ind + 1.5}/>
+                <JobCard id={el._id} title={el.title} company={el.company} url={el.url} key={ind}/>
               </div>
             )
           })}</div>
@@ -44,7 +45,7 @@ const Column = () => {
           <div>{providerObj.cb.map((el, ind) => {
             return (
               <div>
-                <JobCard title={el.title} company={el.company} url={el.url} key={ind + 2.33}/>
+                <JobCard id={el._id} title={el.title} company={el.company} url={el.url} key={ind}/>
               </div>
             )
           })}</div>
@@ -54,7 +55,7 @@ const Column = () => {
           <div>{providerObj.iv.map((el, ind) => {
             return (
               <div>
-                <JobCard title={el.title} company={el.company} url={el.url} key={ind + 3.88}/>
+                <JobCard id={el._id} title={el.title} company={el.company} url={el.url} key={ind}/>
               </div>
             )
           })}</div>
@@ -64,7 +65,7 @@ const Column = () => {
           <div>{providerObj.of.map((el, ind) => {
             return (
               <div>
-                <JobCard title={el.title} company={el.company} url={el.url} key={ind + 1.29}/>
+                <JobCard id={el._id} title={el.title} company={el.company} url={el.url} key={ind}/>
               </div>
             )
           })}</div>

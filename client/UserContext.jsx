@@ -8,11 +8,12 @@ const UserContextProvider = ({ children }) => {
     // states
     const [considering, setConsidering] = useState([]);
     const [applications, setApp] = useState([]);
-    const [callbacks, setCallback] = useState([]);
+    const [callbacks, setCallbacks] = useState([]);
     const [interviews, setInterviews] = useState([]);
     const [offers, setOffers] = useState([]);
+    // const providerObj = {con: considering, app: applications, cb: callbacks, iv: interviews, of: offers, setCon: setConsidering, setA: setApp, setCall: setCallbacks, setInt: setInterviews, setOf: setOffers };
 
-    const providerObj = {con: considering, app: applications, cb: callbacks, iv: interviews, of: offers };
+    const providerObj = {con: considering, app: applications, cb: callbacks, iv: interviews, of: offers,  };
 
     const fetchConsidering = async () => {
         await fetch('api/considering')
@@ -39,10 +40,10 @@ const UserContextProvider = ({ children }) => {
     }
 
     const fetchCallbacks = async () => {
-        axios.get('api/callback')
+        await axios.get('api/callback')
             .then(function (response) {
                 console.log('response', response.data)
-                setCallback(response.data)
+                setCallbacks(response.data)
             })
             .catch(function (error){
                 console.log(error)
@@ -50,7 +51,7 @@ const UserContextProvider = ({ children }) => {
     }
 
     const fetchInterviews = async () => {
-        axios.get('api/interviews')
+        await axios.get('api/interviews')
             .then(function (response) {
                 console.log('response', response.data)
                 setInterviews(response.data)
@@ -61,7 +62,7 @@ const UserContextProvider = ({ children }) => {
     }
 
     const fetchOffers = async () => {
-        axios.get('api/offers')
+        await axios.get('api/offers')
             .then(function (response) {
                 console.log('response', response.data)
                 setOffers(response.data)
@@ -75,9 +76,9 @@ const UserContextProvider = ({ children }) => {
         fetchOffers();
         fetchInterviews();
         fetchConsidering();
-        // Listings
+        
         fetchCallbacks();
-        // Applied
+        
         fetchApplied();
     }, [])
 
@@ -88,20 +89,5 @@ const UserContextProvider = ({ children }) => {
         </UserContext.Provider>
     )
 }
-
-export { UserContextProvider, UserContext };
-
-
-
-// // fetching data for Applied column from backend
-
-
-// Axios Get Request
-// axios.get('/api/applied')
-//   .then(function (response) {
-//     console.log('response', response.data)
-//     setApp(response.data)
-//   })
-//   .catch(function (error){
-//     console.log(error)
-//   })
+// fetchOffers, fetchInterviews, fetchConsidering, fetchCallbacks, fetchApplied 
+export { UserContextProvider, UserContext};
