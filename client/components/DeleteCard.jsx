@@ -1,79 +1,32 @@
 import React, { useState } from 'react';
 import { Modal, Button, Group, TextInput } from '@mantine/core'
+import { IconTrash } from '@tabler/icons';
 import axios from 'axios';
 
-export default function AddCard() {
-  const [opened, setOpened] = useState(false);
-  const [title, setTitle] = useState('');
-  const [company, setCompany] = useState('');
-  const [url, setURL] = useState('')
+export default function DeleteCard({id}) {
+
+  const deleteCard = () => {
+    alert(id);
+    // axios.delete('/api/deleteJob', id)
+    //   .catch(error => console.log('Error caught in DeleteCard.jsx', error))
+  }
+
   return (
-    <div style={{alignItems: "flex-start",
-    marginLeft: "15px"}}>
-      <Modal
-        opened={opened}
-        closeOnClickOutside="true"
-        onClose={() => {
-          setTitle('');
-          setCompany('')
-          setURL('')
-          setOpened(false)}
-        }
-        title="Job Information"
-      >
-        {/* Modal content */}
+    <div style={{alignItems: "flex-end"}}>
         
-        <TextInput
-          data-autofocus
-          value={title} onChange={(event) => setTitle(event.currentTarget.value)}
-          size="xl" fullWidth mt="md" radius="md"
-          align="center"
-          required
-          
-          label="Job Title"
 
-        />
-        <TextInput
-          value={company} onChange={(event) => setCompany(event.currentTarget.value)}
-          size="xl" fullWidth mt="md" radius="md"
-          required
-          label="Company Name"
-        />
-        <TextInput
-          value={url} onChange={(event) => setURL(event.currentTarget.value)}
-          size="xl" fullWidth mt="md" radius="md"
-          required
-          label="Listing URL"
-        />
-        
-        <Group>
-          <Button
-          size="xl" color="red" fullWidth mt="md" radius="md"
-          onClick={() => {
-            const newJob = {title, company, url}
-            console.log(newJob)
-            // axios.post('/api/addNewJob', newJob)
-            setTitle('');
-            setCompany('');
-            setURL('');
-            setOpened(false);
-          }}
-          >
-            Submit
-          </Button>
-        </Group>
-      </Modal>
-
-      <Group position="center">
+      <Group position="right">
         <Button 
+        
           styles={() => ({
             root: {
-              margin: 20
+              marginLeft: 5,
+              marginBottom: 2
           }})}
-          size="lg" color="red" variant="outline" fullWidth mt="md" radius="md"
-          onClick={() => setOpened(true)}
+          size="lg" color="red" variant="outline" compact mt="md" radius="sm"
+          onClick={deleteCard}
         >
-          Delete Job
+          <IconTrash/>
         </Button>
       </Group>
     </div>

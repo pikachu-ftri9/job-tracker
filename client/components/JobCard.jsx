@@ -1,13 +1,16 @@
 import React from 'react'
-import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
+import { Card, Image, Text, Badge, Button, Group, Select } from '@mantine/core';
 // import { useNavigate } from "react-router-dom";
 // {title = 'Full Stack Engineer', company = 'Codesmith', url = 'www.google.com'}
-const JobCard = ({title, company, url}) => {
+import DeleteCard from './DeleteCard.jsx'
+import DropDown from './DropDown.jsx';
 
-  function visitListing(url) {
-    window.location.href = url;
-    // return null;
-  }
+const JobCard = ({id, title, company, url}) => {
+
+  // function visitListing(url) {
+  //   window.location.href = url;
+  //   // return null;
+  // }
 
   return (
     <div>
@@ -18,6 +21,7 @@ const JobCard = ({title, company, url}) => {
       {/* withBorder */}
       <h2>{title}</h2>
       <h3>{company}</h3>
+      
       
       {/* 
       <Group position="apart" mt="md" mb="xs">
@@ -33,6 +37,10 @@ const JobCard = ({title, company, url}) => {
       <a style={{textDecoration: "none", color:"inherit"}} href={url} target="_blank" rel="noreferrer">See Listing</a>
         
       </Button>
+      <div style={{display: "flex", alignItems: "flex-end"}}>
+        <DropDown/>
+        <DeleteCard id={id}/>
+      </div>
       
     </Card>
     </div>

@@ -51,12 +51,12 @@ export default function AddCard() {
           onClick={() => {
             const newJob = {title, company, url}
             console.log(newJob)
-            // axios.post('/api/addNewJob', newJob).catch(error => console.log('Error in AddCard.jsx: ', error))
+            axios.post('/api/addNewJob', newJob)
+              .catch(error => console.log('Error in AddCard.jsx: ', error))
             setTitle('');
             setCompany('');
             setURL('');
             setOpened(false);
-            
           }}
           >
             Submit
@@ -70,7 +70,7 @@ export default function AddCard() {
             root: {
               margin: 20
           }})}
-          size="lg" variant="outline" fullWidth mt="md" radius="md"
+          size="lg" color="blue"  mt="md" radius="md"
           onClick={() => setOpened(true)}
         >
           Add Job

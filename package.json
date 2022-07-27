@@ -21,6 +21,7 @@
   "dependencies": {
     "@babel/plugin-transform-async-to-generator": "^7.1.0",
     "@babel/runtime": "^7.1.2",
+    "@tabler/icons": "^1.78.1",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",

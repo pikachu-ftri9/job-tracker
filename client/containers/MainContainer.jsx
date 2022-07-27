@@ -7,11 +7,13 @@ const MainContainer = () => {
   return (
     // marginRight: "124px"
     <>
-    <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-      <AddCard />
+    
       <h1>Job Tracker</h1>
-      <DeleteCard/>
-    </div>
+      <div style={{margin: "0 auto", width: "300px"}}>
+        <AddCard />
+      </div>  
+      {/* <DeleteCard/> */}
+    
     <ColumnContainer />
     </>
   );

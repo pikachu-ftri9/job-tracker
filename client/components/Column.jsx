@@ -23,10 +23,11 @@ const Column = () => {
         </div>
         <div>
           <h2 className="card">Applied</h2>
-          <div>{providerObj.app.map(el => {
+          <div>{providerObj.app.map((el, ind) => {
+            // console.log(app, el);
             return (
               <div>
-                <JobCard title={el.title} company={el.company} url={el.url} key={el._id}/>
+                <JobCard id={el._id} title={el.title} company={el.company} url={el.url} key={ind}/>
               </div>
             )
           })}</div>
@@ -36,7 +37,7 @@ const Column = () => {
           <div>{providerObj.cb.map((el, ind) => {
             return (
               <div>
-                <JobCard title={el.title} company={el.company} url={el.url} key={ind + 2}/>
+                <JobCard id={el._id} title={el.title} company={el.company} url={el.url} key={ind}/>
               </div>
             )
           })}</div>
