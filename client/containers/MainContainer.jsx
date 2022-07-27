@@ -1,13 +1,19 @@
 import React from 'react'
 import ColumnContainer from './ColumnContainer.jsx';
 import AddCard from '../components/AddCard.jsx';
+import DeleteCard from '../components/DeleteCard.jsx'
 
 const MainContainer = () => {
   return (
-    <div style={{display: "flex", marginRight: "124px"}}>
+    // marginRight: "124px"
+    <>
+    <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
       <AddCard />
-      <ColumnContainer />
+      <h1>Job Tracker</h1>
+      <DeleteCard/>
     </div>
+    <ColumnContainer />
+    </>
   );
 }
 

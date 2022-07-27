@@ -8,7 +8,8 @@ export default function AddCard() {
   const [company, setCompany] = useState('');
   const [url, setURL] = useState('')
   return (
-    <div>
+    <div style={{alignItems: "flex-start",
+    marginLeft: "15px"}}>
       <Modal
         opened={opened}
         closeOnClickOutside="true"
@@ -47,7 +48,7 @@ export default function AddCard() {
         
         <Group>
           <Button
-          size="xl" color="blue" fullWidth mt="md" radius="md"
+          size="xl" color="red" fullWidth mt="md" radius="md"
           onClick={() => {
             const newJob = {title, company, url}
             console.log(newJob)
@@ -66,10 +67,10 @@ export default function AddCard() {
             root: {
               margin: 20
           }})}
-          size="lg" variant="outline" fullWidth mt="md" radius="md"
+          size="lg" color="red" variant="outline" fullWidth mt="md" radius="md"
           onClick={() => setOpened(true)}
         >
-          Add Job
+          Delete Job
         </Button>
       </Group>
     </div>
