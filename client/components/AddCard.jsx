@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button, Group, TextInput } from '@mantine/core'
 import axios from 'axios';
+// import { fetchConsidering } from '../UserContext.jsx';
 
 export default function AddCard() {
   const [opened, setOpened] = useState(false);
@@ -57,6 +58,7 @@ export default function AddCard() {
             setCompany('');
             setURL('');
             setOpened(false);
+            // fetchConsidering();
           }}
           >
             Submit

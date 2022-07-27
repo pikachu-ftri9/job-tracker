@@ -6,9 +6,9 @@ import axios from 'axios';
 export default function DeleteCard({id}) {
 
   const deleteCard = () => {
-    alert(id);
-    // axios.delete('/api/deleteJob', id)
-    //   .catch(error => console.log('Error caught in DeleteCard.jsx', error))
+    // alert(id);
+    axios.delete('/api/delete', {data: {_id: id}})
+      .catch(error => console.log('Error caught in DeleteCard.jsx', error))
   }
 
   return (

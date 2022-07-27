@@ -24,7 +24,7 @@ const Column = () => {
           <div>{providerObj.con.map((el, ind) => {
             return (
               <div>
-                <JobCard title={el.title} company={el.company} url={el.url} key={ind + 0.33}/>
+                <JobCard id={el._id} title={el.title} company={el.company} url={el.url} key={ind}/>
               </div>
             )})}
           </div>

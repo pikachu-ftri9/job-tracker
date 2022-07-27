@@ -38,7 +38,7 @@ const JobCard = ({id, title, company, url}) => {
         
       </Button>
       <div style={{display: "flex", alignItems: "flex-end"}}>
-        <DropDown/>
+        <DropDown id={id}/>
         <DeleteCard id={id}/>
       </div>
       
