@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import JobCard from './JobCard.jsx';
 import { UserContext, UserContextProvider } from '../UserContext.jsx';
+// const providerObj = {con: considering, app: applications, cb: callbacks, iv: interviews, of: offers };
 
 const Column = () => {
   const providerObj = useContext(UserContext);
-  console.log("app", providerObj);
 
   return (
     <>
@@ -18,8 +18,16 @@ const Column = () => {
 
         }}
       >
+
         <div>
           <h2 className="card">Considering</h2>
+          <div>{providerObj.con.map((el, ind) => {
+            return (
+              <div>
+                <JobCard title={el.title} company={el.company} url={el.url} key={ind + 0.33}/>
+              </div>
+            )})}
+          </div>
         </div>
         <div>
           <h2 className="card">Applied</h2>
@@ -44,9 +52,23 @@ const Column = () => {
         </div>
         <div>
           <h2 className="card">Interviews</h2>
+          <div>{providerObj.iv.map((el, ind) => {
+            return (
+              <div>
+                <JobCard id={el._id} title={el.title} company={el.company} url={el.url} key={ind}/>
+              </div>
+            )
+          })}</div>
         </div>
         <div>
           <h2 className="card">Offers</h2>
+          <div>{providerObj.of.map((el, ind) => {
+            return (
+              <div>
+                <JobCard id={el._id} title={el.title} company={el.company} url={el.url} key={ind}/>
+              </div>
+            )
+          })}</div>
         </div>
       </div>
     </>
