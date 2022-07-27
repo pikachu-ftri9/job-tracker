@@ -12,7 +12,13 @@ export default function AddCard() {
     marginLeft: "15px"}}>
       <Modal
         opened={opened}
-        onClose={() => setOpened(false)}
+        closeOnClickOutside="true"
+        onClose={() => {
+          setTitle('');
+          setCompany('')
+          setURL('')
+          setOpened(false)}
+        }
         title="Job Information"
       >
         {/* Modal content */}
