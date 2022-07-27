@@ -69,39 +69,188 @@ listingController.getCallbackListings = async (req, res, next) => {
         });
     }
 }
+listingController.getInterviewListings = async (req, res, next) => {
+    //need to define query based on database structure
+    const qry = 
+    `SELECT * FROM job_tracker.listings WHERE status='Interview'`
 
-listingController.updateListings = (req, res, next) => {
+    try {
+        const appListings = await db.query(`SELECT  *  FROM job_tracker.listings WHERE status='Interview'`);
+        res.locals.listings = appListings.rows;
+        console.log('listingController.getListings', appListings.rows);
+        return next();
+    } catch (error) {
+        return next({
+            log: 'Error in listingController.getListings',
+            status: 400,
+            message: {
+              error: `Error in listingController.getListings ${error}`,
+            },
+        });
+    }
+}
+listingController.getConsideringListings = async (req, res, next) => {
+    //need to define query based on database structure
+    const qry = 
+    `SELECT * FROM job_tracker.listings WHERE status='Considering'`
+
+    try {
+        const appListings = await db.query(`SELECT  *  FROM job_tracker.listings WHERE status='Considering'`);
+        res.locals.listings = appListings.rows;
+        console.log('listingController.getListings', appListings.rows);
+        return next();
+    } catch (error) {
+        return next({
+            log: 'Error in listingController.getListings',
+            status: 400,
+            message: {
+              error: `Error in listingController.getListings ${error}`,
+            },
+        });
+    }
+}
+listingController.getOfferListings = async (req, res, next) => {
+    //need to define query based on database structure
+    const qry = 
+    `SELECT * FROM job_tracker.listings WHERE status='Offer'`
+
+    try {
+        const appListings = await db.query(`SELECT  *  FROM job_tracker.listings WHERE status='Offer'`);
+        res.locals.listings = appListings.rows;
+        console.log('listingController.getListings', appListings.rows);
+        return next();
+    } catch (error) {
+        return next({
+            log: 'Error in listingController.getListings',
+            status: 400,
+            message: {
+              error: `Error in listingController.getListings ${error}`,
+            },
+        });
+    }
+}
+listingController.addNewJob = async (req, res, next) => {
+    //need to define query based on database structure
+    const { title, url, company } = req.body;
+    console.log('here is request info', title, url, company)
+    const VALUES = [title, url, company, "Applied"]
+    const qry = 
+    `INSERT INTO job_tracker.listings (title, url, company, status)
+     VALUES ($1, $2, $3, $4) RETURNING *`;
+    // `INSERT INTO job_tracker.listings (title, url, company, status)
+    //  VALUES  (request.title, request.url, request.company, "Applied")`;
+    // `INSERT INTO employeedetails (title, url, company, status)
+    // VALUES  ('"request.title + request.url + request.company + 'Applied'"');`
+
+    try {
+        const appListings = await db.query(qry, VALUES);
+        res.locals.listings = appListings.rows;
+        console.log('listingController.addNewJob', appListings.rows);
+        return next();
+    } catch (error) {
+        return next({
+            log: 'Error in listingController.addNewJob',
+            status: 400,
+            message: {
+              error: `Error in listingController.addNewJob ${error}`,
+            },
+        });
+    }
+}
+
+listingController.updateListings = async (req, res, next) => {
   //need to define query based on database structure
+  const {_id, status} = req.body;
+  const obj = {Applied:1, Callback:1, Offer:1,Interview:1,Considering:1 } 
   const qry = `UPDATE job_tracker.listings 
-    SET status='Applied'
-    WHERE _id=1
+    SET status=$1
+    WHERE _id=$2
+    RETURNING *
     `;
-
-  db.queryreturn(qry, (err, result) => {
-    if (err) {
-      next(err.stack);
-
-      return next();
-    } else {
-      //this will need to be adjusted based on datastructure
-      res.locals.listings = result.rows;
-      next();
+  const VALUES = [ status, _id ]
+  try {
+    if (obj[status]) {
+        const updatedListing = await db.query(qry, VALUES);
+        res.locals.updatedListing = updatedListing.rows;
+        return next();
     }
-  });
+    else { 
+        next({
+            log: 'not valid Status string try ',
+            status: 400,
+            message: {
+            error: 'Error in updateListing not valid Status',
+            }
+        })
+    }
+  } catch (error) {
+        return next({
+            log: 'Error in updateListing',
+            status: 400,
+            message: {
+                error: 'Error in updateListing ${error}',
+            }
+        })
+  
+  }
+  
+//   db.query(qry, (err, result) => {
+//     if (err) {
+//       next(err.stack);
+
+//       return next();
+//     } else {
+//       //this will need to be adjusted based on datastructure
+//       res.locals.listings = result.rows;
+//       next();
+//     }
+//   });
+//             }
+//         })
+  
+//   }
+  
+//   db.query(qry, (err, result) => {
+//     if (err) {
+//       next(err.stack);
+
+//       return next();
+//     } else {
+//       //this will need to be adjusted based on datastructure
+//       res.locals.listings = result.rows;
+//       next();
+//     }
+//   });
 };
-listingController.deleteListings = (req, res, next) => {
+listingController.deleteListings = async (req, res, next) => {
   //need to define query based on database structure
-  const qry = `Delete from job_tracker.listings where _id=1`;
-
-  db.query(qry, (err, result) => {
-    if (err) {
-      next(err.stack);
-    } else {
-      //this will need to be adjusted based on datastructure
-      res.locals.listings = result.rows;
-      next();
-    }
-  });
+  const {_id } = req.body;
+  VALUES = [_id]
+  const qry = `DELETE FROM job_tracker.listings where _id=$1`;
+  
+  try {
+    const updatedListing = await db.query(qry, VALUES);
+    res.locals.updatedListing = updatedListing.rows;
+    return next();
+  } catch (error) {
+        return next({
+            log: 'Error in deleteListing',
+            status: 400,
+            message: {
+                error: 'Error in deleteListing ${error}',
+            }
+        })
+  
+  }
+//   db.query(qry, (err, result) => {
+//     if (err) {
+//       next(err.stack);
+//     } else {
+//       //this will need to be adjusted based on datastructure
+//       res.locals.listings = result.rows;
+//       next();
+//     }
+//   });
 };
 
 module.exports = listingController;
