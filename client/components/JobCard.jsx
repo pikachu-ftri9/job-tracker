@@ -29,4 +29,4 @@ const JobCard = ({title = 'Full Stack Engineer', company = 'Codesmith', url = 'n
   );
 }
 
-export default JobCard
+export default JobCard;
