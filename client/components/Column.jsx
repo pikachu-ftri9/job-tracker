@@ -18,7 +18,7 @@ const Column = () => {
       >
 
         <div>
-          <h2 className="card">Considering</h2>
+          <h2 className="columnCard">Considering</h2>
           <div>{providerObj.considering.map((job, ind) => {
             return (
               <div>
@@ -28,7 +28,7 @@ const Column = () => {
           </div>
         </div>
         <div>
-          <h2 className="card">Applied</h2>
+          <h2 className="columnCard">Applied</h2>
           <div>{providerObj.applied.map((job, ind) => {
             // console.log(app, job);
             return (
@@ -39,7 +39,7 @@ const Column = () => {
           })}</div>
         </div>
         <div>
-          <h2 className="card">Callbacks</h2>
+          <h2 className="columnCard">Callbacks</h2>
           <div>{providerObj.callbacks.map((job, ind) => {
             return (
               <div>
@@ -49,7 +49,7 @@ const Column = () => {
           })}</div>
         </div>
         <div>
-          <h2 className="card">Interviews</h2>
+          <h2 className="columnCard">Interviews</h2>
           <div>{providerObj.interviews.map((job, ind) => {
             return (
               <div>
@@ -59,7 +59,7 @@ const Column = () => {
           })}</div>
         </div>
         <div>
-          <h2 className="card">Offers</h2>
+          <h2 className="columnCard">Offers</h2>
           <div>{providerObj.offers.map((job, ind) => {
             return (
               <div>

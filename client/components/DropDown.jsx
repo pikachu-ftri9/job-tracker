@@ -16,6 +16,7 @@ export default function DropDown({id}) {
           location.reload();
         }}
         placeholder="Job Status"
+        
         data={[
           { value: 'Applied', label: 'Applied' },
           { value: 'Callback', label: 'Callbacks' },
