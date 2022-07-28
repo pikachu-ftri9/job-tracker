@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import JobCard from './JobCard.jsx';
 import { UserContext, UserContextProvider } from '../UserContext.jsx';
-// const providerObj = {con: considering, app: applications, cb: callbacks, iv: interviews, of: offers };
 
 const Column = () => {
   const providerObj = useContext(UserContext);
