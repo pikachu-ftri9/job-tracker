@@ -4,4 +4,9 @@ import { Provider } from 'react-redux';
 import App from './App.jsx';
 import './scss/styles.scss';
 
-render(<App />, document.getElementById('root'));
+render(
+  <UserContextProvider>
+    <App />
+  </UserContextProvider>,
+  document.getElementById('root')
+);
