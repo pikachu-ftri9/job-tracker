@@ -5,8 +5,8 @@ import App from './App.jsx';
 import './scss/styles.scss';
 
 render(
-  <UserContextProvider>
-    <App />
-  </UserContextProvider>,
+  // <UserContextProvider>
+  <App />,
+  // </UserContextProvider>
   document.getElementById('root')
 );
