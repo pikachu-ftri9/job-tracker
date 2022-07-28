@@ -4,9 +4,7 @@ body {
   text-align: center;
 }
 
-
 h2 {
-  background-color: white;
   border-radius: 8px;
   margin-top: 0;
   padding: 10px;
@@ -15,4 +13,12 @@ h2 {
 .card {
   margin: 15px;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  background-color: whitesmoke;
+}
+
+.columnCard {
+  margin: 15px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  background-color: dodgerblue;
+  color: white;
 }

@@ -3,10 +3,7 @@ import { Select } from '@mantine/core';
 import axios from 'axios';
 
 export default function DropDown({id}) {
-   const [value, setValue] = useState('');
-  //  const makePatchRequest = () => {
-    // axios.patch('api/update', {_id: id, status: value}).catch(error => console.log(error))
-  //  }
+  const [value, setValue] = useState('');
   return (
     <>
       <Select
@@ -19,6 +16,7 @@ export default function DropDown({id}) {
           location.reload();
         }}
         placeholder="Job Status"
+        
         data={[
           { value: 'Applied', label: 'Applied' },
           { value: 'Callback', label: 'Callbacks' },

@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import JobCard from './JobCard.jsx';
 import { UserContext, UserContextProvider } from '../UserContext.jsx';
-// const providerObj = {con: considering, app: applications, cb: callbacks, iv: interviews, of: offers };
 
 const Column = () => {
   const providerObj = useContext(UserContext);
@@ -15,57 +14,56 @@ const Column = () => {
           gridTemplateColumns: "repeat(5, 1fr)",
           backgroundColor: "lightgray",
           borderRadius: "10px"
-
         }}
       >
 
         <div>
-          <h2 className="card">Considering</h2>
-          <div>{providerObj.con.map((el, ind) => {
+          <h2 className="columnCard">Considering</h2>
+          <div>{providerObj.considering.map((job, ind) => {
             return (
               <div>
-                <JobCard id={el._id} title={el.title} company={el.company} url={el.url} key={ind}/>
+                <JobCard id={job._id} title={job.title} company={job.company} url={job.url} key={ind}/>
               </div>
             )})}
           </div>
         </div>
         <div>
-          <h2 className="card">Applied</h2>
-          <div>{providerObj.app.map((el, ind) => {
-            // console.log(app, el);
+          <h2 className="columnCard">Applied</h2>
+          <div>{providerObj.applied.map((job, ind) => {
+            // console.log(app, job);
             return (
               <div>
-                <JobCard id={el._id} title={el.title} company={el.company} url={el.url} key={ind}/>
+                <JobCard id={job._id} title={job.title} company={job.company} url={job.url} key={ind}/>
               </div>
             )
           })}</div>
         </div>
         <div>
-          <h2 className="card">Callbacks</h2>
-          <div>{providerObj.cb.map((el, ind) => {
+          <h2 className="columnCard">Callbacks</h2>
+          <div>{providerObj.callbacks.map((job, ind) => {
             return (
               <div>
-                <JobCard id={el._id} title={el.title} company={el.company} url={el.url} key={ind}/>
+                <JobCard id={job._id} title={job.title} company={job.company} url={job.url} key={ind}/>
               </div>
             )
           })}</div>
         </div>
         <div>
-          <h2 className="card">Interviews</h2>
-          <div>{providerObj.iv.map((el, ind) => {
+          <h2 className="columnCard">Interviews</h2>
+          <div>{providerObj.interviews.map((job, ind) => {
             return (
               <div>
-                <JobCard id={el._id} title={el.title} company={el.company} url={el.url} key={ind}/>
+                <JobCard id={job._id} title={job.title} company={job.company} url={job.url} key={ind}/>
               </div>
             )
           })}</div>
         </div>
         <div>
-          <h2 className="card">Offers</h2>
-          <div>{providerObj.of.map((el, ind) => {
+          <h2 className="columnCard">Offers</h2>
+          <div>{providerObj.offers.map((job, ind) => {
             return (
               <div>
-                <JobCard id={el._id} title={el.title} company={el.company} url={el.url} key={ind}/>
+                <JobCard id={job._id} title={job.title} company={job.company} url={job.url} key={ind}/>
               </div>
             )
           })}</div>

@@ -5,7 +5,7 @@
   "main": "./server/server.js",
   "scripts": {
     "start": "nodemon server/server.js",
-    "dev": "NODE_ENV=development webpack serve --open",
+    "dev": "NODE_ENV=development webpack serve --open & nodemon server/server.js",
     "build": "NODE_ENV=production webpack"
   },
   "repository": {
